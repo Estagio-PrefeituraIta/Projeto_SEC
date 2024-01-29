@@ -1,0 +1,28 @@
+body,
+main {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: darkgrey;
+  /* Trocar a Imagem */
+  /* background-image: url("../assets/imgs/Background_logo.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center; */
+}
+.container{
+    width: 600px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+}
+
+.form-login{
+    display: flex;
+    flex-direction: column;
+}
