@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="./src/styles/reset.css" />
+    <link rel="stylesheet" href="./src/styles/var.css">
     <link rel="stylesheet" href="./src/styles/style_login.css" />
 
     <title>Login</title>
@@ -19,18 +20,20 @@
         <form action="" class="form-login">
           <div class="inputBox">
             <label for="cpf" >CPF</label>
-            <input type="text" name="cpf" id="cpf" class="input-text" />
+            <input type="text" name="cpf" id="cpf" class="input-text" required/>
           </div>
           
           <div class="inputBox">
-            <label for="senha" >senha</label>
-            <input type="senha" name="senha" id="senha"/>
+            <label for="senha" >Senha</label>
+            <input type="senha" name="senha" id="senha" value="******"/>
           </div>
-          <a href="#">Esqueci a senha</a>
 
+        
           <button type="submit" class="button">Acessar</button>
 
-          <span>Não possui conta <a href="#">Cadastre-se</a></span>
+          <a href="#">Esqueci a senha</a>
+
+          <span>Não possui conta?<a href="#">Cadastre-se</a></span>
         </form>
       </div>
     </main>
