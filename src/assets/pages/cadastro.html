@@ -1,13 +1,58 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="../../styles/reset.css">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="../../styles/reset.css" />
+    <link rel="stylesheet" href="../../styles/var.css" />
+    <link rel="stylesheet" href="../../styles/cadastro.css" />
+
     <title>cadastro</title>
 </head>
+
 <body>
-    <h1>Cadastro</h1>
+    <main>
+        <div class="container">
+            <h2>Cadastro</h2>
+            <form action="" class="form-login">
+                <div class="inputBox">
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" name="nome" id="nome" class="input-text" required />
+                </div>
+
+                <div class="inputBox">
+                    <label for="cpf">CPF</label>
+                    <input type="text" name="cpf" id="cpf" class="input-text" required />
+                </div>
+
+                <div class="inputBox">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" id="email" class="input-text" required />
+                </div>
+
+                <div class="inputBox">
+                    <label for="telefone">telefone</label>
+                    <input type="tel" name="telefone" id="telefone" class="input-text" required />
+                </div>
+
+                <div class="inputBox">
+                    <label for="senha">Senha</label>
+                    <input type="senha" name="senha" id="senha" placeholder="******" />
+                </div>
+
+                <div class="inputBox">
+                    <label for="conf_senha">Confirmar Senha</label>
+                    <input type="senha" name="conf_senha" id="conf_senha" placeholder="******" />
+                </div>
+
+                <button type="submit" class="button">Acessar</button>
+
+                <span>Ja possui conta?<a href="../../../index.html">Faça Login</a></span>
+            </form>
+        </div>
+    </main>
 </body>
+
 </html>

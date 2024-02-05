@@ -20,12 +20,12 @@
         <form action="" class="form-login">
           <div class="inputBox">
             <label for="cpf" >CPF</label>
-            <input type="text" name="cpf" id="cpf" class="input-text" required/>
+            <input pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" type="text" name="cpf" id="cpf" class="input-text" required/>
           </div>
           
           <div class="inputBox">
             <label for="senha" >Senha</label>
-            <input type="senha" name="senha" id="senha" value="******"/>
+            <input type="senha" name="senha" id="senha" placeholder="******"/>
           </div>
 
         
@@ -33,7 +33,7 @@
 
           <a href="#">Esqueci a senha</a>
 
-          <span>Não possui conta?<a href="#">Cadastre-se</a></span>
+          <span>Não possui conta?<a href="/src/assets/pages/cadastro.html">Cadastre-se</a></span>
         </form>
       </div>
     </main>

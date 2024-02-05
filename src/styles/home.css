@@ -1,0 +1,37 @@
+body{
+    min-width: 400px;
+}
+
+.bg{
+    background-color: var(--bg-color2);
+}
+
+.nav-link:hover{
+    opacity: 0.5;
+    transition: 0.5s;
+}
+
+.btn{
+    background-color: var(--bg-color1) !important;
+    color: white !important;
+}
+
+button:focus{
+    outline: none !important;
+    border: none !important;
+}
+
+form{
+    width: 500px;
+
+}
+
+.nav-link{
+    max-width: 100px;
+}
+
+.container-table{
+    width: 100vw;
+    min-width: 400px;
+}
+
