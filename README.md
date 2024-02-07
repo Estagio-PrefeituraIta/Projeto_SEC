@@ -1,1 +1,19 @@
-# Projeto_SEC
+<h1 align="center">📝 Sistema de Contrachques📝</h1>
+<p align="center">
+   <img src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=RED&style=for-the-badge" #vitrinedev/>
+</p>
+
+<p align="justify">A emissão de contracheques é uma parte essencial da gestão de recursos humanos em qualquer organização. Um sistema para emitir contracheques é uma ferramenta crucial que facilita o processo de pagamento de funcionários, garantindo que eles recebam informações detalhadas e precisas sobre seus salários, benefícios e descontos. Esse sistema desempenha um papel fundamental na promoção da transparência e na conformidade com regulamentos trabalhistas, ao mesmo tempo em que economiza tempo e recursos administrativos. Ele oferece uma solução automatizada para calcular salários com base em informações específicas de cada funcionário, como horas trabalhadas, benefícios, deduções fiscais e outras variáveis.
+
+<h3 align="left">Ferramentas utilizadas:</h3>
+<p align="left"> <a href="https://getbootstrap.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-plain-wordmark.svg" alt="bootstrap" width="40" height="40"/> </a> <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40"/> </a> <a href="https://www.figma.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="figma" width="40" height="40"/> </a> <a href="https://git-scm.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="40" height="40"/> </a> <a href="https://www.w3.org/html/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="40" height="40"/> </a> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> </a> <a href="https://www.mysql.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="40" height="40"/> </a> <a href="https://www.php.net" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg" alt="php" width="40" height="40"/> </a> </p>
+
+## Desenvolvedores - ICET 2023/2
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/AntonyGuzma"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/88747866?v=4" width="100px;" alt=""/><br /><sub><b>Antony Gusmão</b></sub></a><br /><a href="https://github.com/jhonferreira17" title="Desenvolvedores">👨‍💻</a></td>
+    <td align="center"><a href="https://github.com/jhonferreira17"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/48557997?s=400&u=a4f335217508da3f562ffdce37acc2936364e998&v=4" width="100px;" alt=""/><br /><sub><b>Jonata Ferreira</b></sub></a><br /><a href="https://github.com/jhonferreira17" title="Desenvolvedores">👨‍💻</a></td>
+    <td align="center"><a href="https://github.com/JA-santos"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/87536351?v=4" width="100px;" alt=""/><br /><sub><b>Jade Santos</b></sub></a><br /><a href="https://github.com/JA-santos" title="Desenvolvedores">👩‍💻</a></td>
+    <td align="center"><a href="https://github.com/natasharhayane"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/70410978?v=4" width="100px;" alt=""/><br /><sub><b>Natasha Ribeiro</b></sub></a><br /><a href="https://github.com/natasharhayane" title="Desenvolvedores">👩‍💻</a></td>
+      </tr>
+</table>
