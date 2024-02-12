@@ -26,7 +26,7 @@
             header('Location: ../login.html');
             
         } else {
-            print_r('Existe');
+            // print_r('Existe');
             
             $_SESSION['cpf_user'] = $cpf_user;//cria a variavel da sessão
             $_SESSION['senha_user'] = $senha_user;//cria a variavel da sessão

@@ -28,3 +28,21 @@ CREATE TABLE IF NOT EXISTS `sec`.`infor_user` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `sec`.`funcionarios`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `sec`.`funcionarios` (
+  `id_matricula` INT NOT NULL AUTO_INCREMENT,
+  `matricula` VARCHAR(45) NULL,
+  `lotacao` VARCHAR(50) NULL,
+  `cargo` VARCHAR(50) NULL,
+  `usuarios_cpf_user` VARCHAR(11) NOT NULL,
+  PRIMARY KEY (`id_matricula`),
+  INDEX `fk_funcionarios_usuarios1_idx` (`usuarios_cpf_user` ASC) ,
+  CONSTRAINT `fk_funcionarios_usuarios1`
+    FOREIGN KEY (`usuarios_cpf_user`)
+    REFERENCES `sec`.`usuarios` (`cpf_user`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
