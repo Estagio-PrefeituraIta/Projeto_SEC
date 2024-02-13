@@ -8,7 +8,7 @@
        unset($_SESSION['senha_user']);
    
        // Redirecionar para a página de login
-       header('Location: ../login.html');
+       header('Location: ./login.html');
        exit(); // Certifique-se de sair após o redirecionamento
    }
    // Verificar se o botão de logout foi clicado
@@ -37,10 +37,8 @@
     </form>
 
     <br>
-    <form action="#" method="POST" id="opcoes">
-                <label for="opcao">Matriucla Desejada:</label>
-                <!-- <select id="opcao" name="op_matricula"> -->
-                <?php
+
+    <?php
                      include_once('./Controller/conexao.php');
 
                     // Verifique se a conexão foi bem-sucedida
@@ -66,7 +64,10 @@
 
                     // Gerar opções para o elemento select
                     while ($linha = mysqli_fetch_assoc($resultado)) {
-                        echo "<h2 name='{$linha['matricula']}'>{$linha['matricula']}</h2>";
+                        echo "<h2>{$linha['matricula']}</h2> 
+                        <form method='POST'  action='./Model/consultar_cpf.php'>
+                        <button type='submit'  name='matricula' value='{$linha['matricula']}'>{$linha['matricula']}</button>
+                    </form>";
                     } 
                     // Verificar se o loop não produziu nenhum botão
                     if (mysqli_num_rows($resultado) === 0) {

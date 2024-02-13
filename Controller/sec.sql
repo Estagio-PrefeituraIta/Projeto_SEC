@@ -46,3 +46,32 @@ CREATE TABLE IF NOT EXISTS `sec`.`funcionarios` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `sec`.`variavel`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `sec`.`variavel` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `matricula` INT NOT NULL,
+  `mes` VARCHAR(45) NULL,
+  `ano` VARCHAR(45) NULL,
+  `sequencia` VARCHAR(45) NULL,
+  `provento` VARCHAR(45) NULL,
+  `referencia` VARCHAR(45) NULL,
+  `valor` VARCHAR(45) NULL,
+  `f_v` VARCHAR(45) NULL,
+  `data_cadastro` VARCHAR(45) NULL,
+  `data_alteracao` VARCHAR(45) NULL,
+  `sinal` VARCHAR(45) NULL,
+  `ir` VARCHAR(45) NULL,
+  `previdencia` VARCHAR(45) NULL,
+  `pensao` VARCHAR(45) NULL,
+  INDEX `fk_variavel_funcionarios1_idx` (`matricula` ASC) ,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_variavel_funcionarios1`
+    FOREIGN KEY (`matricula`)
+    REFERENCES `sec`.`funcionarios` (`id_matricula`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
