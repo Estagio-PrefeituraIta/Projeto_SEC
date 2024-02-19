@@ -17,36 +17,20 @@ if (!isset($_SESSION['cpf_user']) || !isset($_SESSION['senha_user'])) {
 $logado = $_SESSION['cpf_user'];
 // print_r($logado);
 
-//obter matricula
+//obter ano selecionado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Conecte ao banco de dados
     include_once('../Controller/conexao.php');
 
     // Obtém o valor do botão clicado do formulário
+    $ano = isset($_POST['ano']) ? $_POST['ano'] : null;
+    $id_matricula = isset($_POST['id_matricula']) ? $_POST['id_matricula'] : null;
     $matricula = isset($_POST['matricula']) ? $_POST['matricula'] : null;
 
-    // Agora você pode usar a variável $matricula conforme necessário
-    if ($matricula !== null) {
-        // Faça algo com a matrícula 
-        echo "Matrícula selecionada: " . htmlspecialchars($matricula) . '<br>';
-    } else {
-        // A matrícula não foi enviada ou é nula
-        echo "Matrícula não encontrada.";
-    }
 } else {
     // O formulário ainda não foi enviado
     echo "Por favor, envie o formulário.";
 }
-
-//buscar ID referente ao Código da matricula
-$query = "SELECT * FROM funcionarios WHERE matricula = '$matricula'";
-$result = mysqli_query($conexao, $query);
-while ($dados = mysqli_fetch_assoc($result)) {
-    $id_matricula = $dados['id_matricula'];
-}
-echo "Id da matricula: ";
-print_r($id_matricula);
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,30 +44,60 @@ print_r($id_matricula);
 <body>
     <?php
     include_once('../Controller/conexao.php');
+    
 
-
-    $query = "SELECT DISTINCT mes, ano FROM variavel WHERE matricula = $id_matricula ORDER BY ano DESC, mes ASC";
+    $query = "SELECT DISTINCT mes FROM variavel WHERE matricula = $id_matricula AND ano = $ano ORDER BY mes ASC";
     $resultado = mysqli_query($conexao, $query);
+    
+    // Obtém a quantidade de linhas retornadas
+    $num_rows = mysqli_num_rows($resultado);
 
+    // Exibe a quantidade de linhas
+    echo "Meses Encontrados: " . $num_rows;
     // Check if there are any results
     if (mysqli_num_rows($resultado) > 0) {
         // Exiba os registros sem repetir o mês e o ano
         while ($linha = mysqli_fetch_assoc($resultado)) {
             $mes = htmlspecialchars($linha['mes']);
-            $ano = htmlspecialchars($linha['ano']);
 
             // Add the opening tag for an HTML element, e.g., a button
-            echo ' id-matricula="' . $id_matricula . '
-                " numero matricula="' . $matricula . '
-                " data-mes="' . $mes . '
-                " data-ano="' . $ano . '
-                ">';
+            echo '<br><button class="meuBotao" data-id-matricula="' . $id_matricula . ' " data-numero-matricula="' . $matricula . ' " data-ano="' . $ano . '" " data-mes="' . $mes . '">Visualizar</button> 
+            id-matricula="' . $id_matricula . '
+            data-id-matricula="' . $matricula . '
+            "<span> data-mes="' . $mes . ' </span>
+            " data-ano="' . $ano . '
+            "> <br>';
         }
     } else {
         // Nao obteve resultado
         echo '<br>Não encontrei Nada';
     }
     ?>
+
+
+    <script>
+        // Adicione um evento de clique a todos os botões com a classe "visualizar-icon"
+        // Adicionando um evento de clique para cada botão com a classe "meuBotao"
+        var botoes = document.querySelectorAll('.meuBotao');
+        botoes.forEach(function (botao) {
+            botao.addEventListener('click', function () {
+                // Obtendo os valores dos data attributes
+                var idMatricula = botao.getAttribute('data-id-matricula');
+                var numeroMatricula = botao.getAttribute('data-numero-matricula');
+                var mes = botao.getAttribute('data-mes');
+                var ano = botao.getAttribute('data-ano');
+
+                // Faz algo com os valores, por exemplo, exibe no console
+                // alert("ID Matricula: " + idMatricula + "Num. Matricula: " + numeroMatricula);
+
+                // Construa a URL da página de destino com os valores como parâmetros de consulta
+                const url = 'pdf_visualizar.php?mes=' + encodeURIComponent(mes) + '&ano=' + encodeURIComponent(ano) + '&id_matricula=' + encodeURIComponent(idMatricula) + '&NumMatricula=' + encodeURIComponent(numeroMatricula);
+                                
+                // Redirecione o usuário para a página de destino
+                window.location.href = url;
+            });
+        });
+    </script>
 </body>
 
 </html>

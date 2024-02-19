@@ -30,7 +30,7 @@
             
             $_SESSION['cpf_user'] = $cpf_user;//cria a variavel da sessão
             $_SESSION['senha_user'] = $senha_user;//cria a variavel da sessão
-            header('Location: ../home.php');
+            header('Location: ../Model/home.php');
             
         }
     }else{
