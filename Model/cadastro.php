@@ -42,6 +42,7 @@
                 // Verifica se foi possivel
                 if (!$result) {
                     // Redirecionar para a tela de login
+                    echo"error";
                     header("Location: ../cadastro.html");
                     exit; // Certifique-se de que o script pare de ser executado após o redirecionamento
                 }else{
