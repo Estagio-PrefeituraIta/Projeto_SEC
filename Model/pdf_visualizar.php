@@ -22,10 +22,6 @@
     $cidade_uf=  ' ITACOATIARA-AM';
     $cnpj = '04.241.980/0001-75';
 
-    echo "<h1>$empresa</h1>";
-    echo "<p>$endereco</p>";
-    echo "<p>$cidade_uf  -  $cnpj</p>";
-
     // Verifica se os parâmetros 'mes' e 'ano' estão presentes na URL
     if (isset($_GET['mes'], $_GET['ano'], $_GET['id_matricula'], $_GET['NumMatricula'])){
         // Obtém os valores de mês e ano da URL e realiza a sanitização
@@ -38,7 +34,7 @@
         //  echo "Mês: " . $mes . "<br>";
         //  echo "Ano: " . $ano . "<br>";
         //  echo "id_matricula: " . $id_matricula . "<br>";
-         echo "matricula: " . $matricula;
+        //  echo "matricula: " . $matricula;
     } else {
        // Caso os parâmetros não estejam presentes na URL
         header('HTTP/1.1  400 Bad Request');
@@ -51,10 +47,7 @@
     $resulta = mysqli_query($conexao, $query);
     while($dados = mysqli_fetch_assoc($resulta)){
         $usuario = $dados['nome_user'];
-        echo "<br>Nome: $usuario";
     }
-
-    // print_r($usuario);
 
     // Obter o lotação do usuario e cargo
     $query = "SELECT lotacao , cargo FROM funcionarios WHERE  matricula = '$matricula' ";
@@ -63,12 +56,10 @@
         $lotacao = $dados['lotacao'];
         $cargo = $dados['cargo'];
 
-        echo "<br> Locatção: $lotacao";
-        echo "<br> Cargo: $cargo <br>";
+        // echo "<br> Locatção: $lotacao";
+        // echo "<br> Cargo: $cargo <br>";
     }
-    // print_r($lotacao);
-    // print_r($cargo);
-    
+
      // Obter os dados da tabela variável (dados do contracheque) 
     //  Se você obtiver resultados duplicados (com meses iguais)
      $query = "SELECT *, matricula, mes, ano, MAX(mes) as mes
@@ -83,12 +74,47 @@
         $provento = $dados['provento'];
         $referencia = $dados['referencia'];
         $valor = $dados['valor'];
-
-        echo "<br> Mes: $mes";
-        echo "<br> Provento: $provento";
-        echo "<br>Referencia: $referencia";
-        echo "<br>Valor: $valor <hr>";
+        $admissao = $dados['data_cadastro'];
+        // echo "<br> Mes: $mes";
+        // echo "<br> Provento: $provento";
+        // echo "<br>Referencia: $referencia";
+        // echo "<br>Valor: $valor <hr>";
     } 
+
+    echo "
+    <div class='container'>
+    <h2>Recibo de Pagamento de Salário</h2>
+        <div class='info'>
+            <div class='company-info'>
+                <div><strong>Empresa:</strong> $empresa</div>
+                <div>
+                <strong>Endereço:</strong> $endereco
+                </div>
+                <div><strong>Cidade/UF:</strong> $cidade_uf</div>
+                <div><strong>CNPJ:</strong> $cnpj</div>
+            </div>
+        <div class='date-info'>
+            <h4>Mês/Ano: <br/> $mes/$ano</h4>
+        </div>
+    </div>
+        <table>
+        <tr>
+            <th>Matrícula</th>
+            <th>Nome</th>
+            <th>PIS/PASEP</th>
+            <th>ADMISSÃO</th>
+            <th>Lotação</th>
+        </tr>
+        <tr>
+            <td>$matricula</td>
+            <td>$usuario</td>
+            <td></td>
+            <td>$admissao</td>
+            <td>$lotacao</td>
+        </tr>
+        </table>
+    </div>
+    ";
 
     //Fazer Verificação Mensal
     $query = "SELECT DISTINCT mes FROM variavel WHERE matricula = $id_matricula AND ano = $ano ORDER BY mes ASC";
@@ -98,7 +124,12 @@
     $num_rows = mysqli_num_rows($resultado);
     echo "<br>Meses de $ano Encontrados: " . $num_rows; 
 
-    echo '<br><button id="meuBotao" data-id-matricula="' . $id_matricula . ' " data-numero-matricula="' . $matricula . ' " data-ano="' . $ano . '">Ficha Financeira</button> '
+    echo '<br><button id="meuBotao" data-id-matricula="' . $id_matricula . ' " data-numero-matricula="' . $matricula . ' " data-ano="' . $ano . '">Ficha Financeira</button> ';
+
+    $url = 'pdfteste.php?mes=' . urlencode($mes) . '&ano=' . urlencode($ano) . '&id_matricula=' . urlencode($id_matricula) . '&NumMatricula=' . urlencode($matricula);
+    
+    echo "<br><a href='$url'>Visualizar em PDF</a>";
+    
 ?>
 
 <!DOCTYPE html>
@@ -106,6 +137,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="./assets/css/pdf.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
