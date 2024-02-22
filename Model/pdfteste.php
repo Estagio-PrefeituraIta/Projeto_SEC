@@ -96,5 +96,11 @@ $dompdf->setPaper('A4','portrait');
 //Renderizar conteudo
 $dompdf->render();
 
+// Diga ao navegador que o conteúdo é um PDF
+header('Content-type: application/pdf');
+
 //Gerar o pdf 
-$dompdf->stream($fileName);
+// $dompdf->stream($fileName);
+
+// Saída do PDF para o navegador
+echo $dompdf->output();

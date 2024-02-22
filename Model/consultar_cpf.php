@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -68,6 +68,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             " data-ano="' . $ano . '
             "> <br>';
         }
+
+        $url = 'pdf_ficha_financeira.php?mes=' . '&ano=' . urlencode($ano) . '&id_matricula=' . urlencode($id_matricula) . '&NumMatricula=' . urlencode($matricula);
+    
+        echo "<br><a href='$url'>Visualizar Ficha Financeira</a>";
     } else {
         // Nao obteve resultado
         echo '<br>Não encontrei Nada';

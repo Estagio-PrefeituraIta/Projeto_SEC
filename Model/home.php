@@ -13,12 +13,24 @@ if (!isset($_SESSION['cpf_user']) || !isset($_SESSION['senha_user'])) {
 }
 // Verificar se o botão de logout foi clicado
 if (isset($_POST['logout'])) {
-    // Encerrar a sessão
-    session_destroy();
+    echo '<script>
+            // Exibir o alerta com opções
+            var confirmLogout = confirm("Deseja Sair?");
 
-    // Redirecionar para a página de login (ou outra página desejada)
-    header("Location: ../login.html");
-    exit();
+            // Verificar a escolha do usuário
+            if (confirmLogout) {
+                // Se confirmado, encerra a sessão e redireciona
+                alert("Sessão encerrada!");
+                // Encerrar a sessão
+                `session_destroy();`
+
+                // Redirecionar para a página de login (ou outra página desejada)
+                window.location.href = "../login.html";
+            } else {
+                // Se não confirmado, continua
+                alert("Sessão não encerrada");
+            }
+          </script>';
 }
 $logado = $_SESSION['cpf_user'];
 // print_r($logado);

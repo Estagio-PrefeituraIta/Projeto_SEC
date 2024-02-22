@@ -124,11 +124,9 @@
     $num_rows = mysqli_num_rows($resultado);
     echo "<br>Meses de $ano Encontrados: " . $num_rows; 
 
-    echo '<br><button id="meuBotao" data-id-matricula="' . $id_matricula . ' " data-numero-matricula="' . $matricula . ' " data-ano="' . $ano . '">Ficha Financeira</button> ';
-
     $url = 'pdfteste.php?mes=' . urlencode($mes) . '&ano=' . urlencode($ano) . '&id_matricula=' . urlencode($id_matricula) . '&NumMatricula=' . urlencode($matricula);
     
-    echo "<br><a href='$url'>Visualizar em PDF</a>";
+    echo "<br><a  href='$url' target='_blank'>Visualizar em PDF</a>";
     
 ?>
 
