@@ -31,9 +31,6 @@
             $_SESSION['cpf_user'] = $cpf_user;//cria a variavel da sessão
             $_SESSION['senha_user'] = $senha_user;//cria a variavel da sessão
             // header('Location: ../Model/home.php');
-            echo  "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
-                   <link rel='stylesheet' href='sweetalert2.min.css'>
-            ";
             echo "<script>
                 alert(`Logado com Sucesso`);
                 window.location.href = '../Model/home.php'

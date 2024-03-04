@@ -23,7 +23,10 @@ if (isset($_POST['submit']) && !empty($_POST['cpf_user'])) {
 
         if (mysqli_num_rows($result) < 1) {
             //Caso não esteja nos dados da prefeitura
-            echo "<script>alert(`nao tem vinculo com a prefeitura nao posso cadastrar`)</script>";
+            echo "<script>
+                alert(`nao tem vinculo com a prefeitura nao posso cadastrar`)
+                window.location.href = '../login.html';
+            </script>";
 
         } else {
             echo "<script>alert(`tem vinculo com a prefeitura posso cadastrar`)</script>";

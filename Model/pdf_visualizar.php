@@ -114,15 +114,58 @@
         </tr>
         </table>
     </div>
+
+    <table class='table'>
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Descrição</th>
+          <th>Referência</th>
+          <th>Vencimento</th>
+          <th>Descontos</th>
+        </tr>
+      </thead>
+      <tbody>
     ";
+
+    // Obter os dados da tabela variável (dados do contracheque) 
+    //  Se você obtiver resultados duplicados (com meses iguais)
+    $query = "SELECT *, matricula, mes, ano, MAX(mes) as mes
+    FROM variavel
+    WHERE matricula = '$id_matricula' AND mes = '$mes' AND ano = '$ano'
+    GROUP BY matricula, mes, ano";
+    $result = mysqli_query($conexao, $query);
+
+   //      
+    while ($dados = mysqli_fetch_assoc($result)) {
+       $mes = ($dados["mes"]);
+       $provento = $dados['provento'];
+       $referencia = $dados['referencia'];
+       $valor = $dados['valor'];
+       $admissao = $dados['data_cadastro'];
+       // echo "<br> Mes: $mes";
+       // echo "<br> Provento: $provento";
+       // echo "<br>Referencia: $referencia";
+       // echo "<br>Valor: $valor <hr>";
+       echo "
+       <tr>
+          <td>002</td>
+          <td>Serviço X</td>
+          <td>$referencia</td>
+          <td>2024-04-10</td>
+          <td>10%</td>
+        </tr>
+      </tbody>
+    </table>";
+   } 
 
     //Fazer Verificação Mensal
     $query = "SELECT DISTINCT mes FROM variavel WHERE matricula = $id_matricula AND ano = $ano ORDER BY mes ASC";
     $resultado = mysqli_query($conexao, $query);
 
     // Obtém a quantidade de linhas retornadas
-    $num_rows = mysqli_num_rows($resultado);
-    echo "<br>Meses de $ano Encontrados: " . $num_rows; 
+    // $num_rows = mysqli_num_rows($resultado);
+    // echo "<br>Meses de $ano Encontrados: " . $num_rows; 
 
     $url = 'pdfteste.php?mes=' . urlencode($mes) . '&ano=' . urlencode($ano) . '&id_matricula=' . urlencode($id_matricula) . '&NumMatricula=' . urlencode($matricula);
     
@@ -135,31 +178,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="./assets/css/pdf.css">
+    <link rel="stylesheet" href="http://localhost/Projeto_SEC/Model/assets/css/pdf.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-<script>
-        // Adicione um evento de clique a todos os botões com a classe "visualizar-icon"
-        // Adicionando um evento de clique para cada botão com a classe "meuBotao"
-        var botao = document.getElementById('meuBotao');
-            botao.addEventListener('click', function () {
-                // Obtendo os valores dos data attributes
-                var idMatricula = botao.getAttribute('data-id-matricula');
-                var numeroMatricula = botao.getAttribute('data-numero-matricula');
-                var mes = botao.getAttribute('data-mes');
-                var ano = botao.getAttribute('data-ano');
 
-                // Faz algo com os valores, por exemplo, exibe no console
-                alert("ID Matricula: " + idMatricula + "Num. Matricula: " + numeroMatricula);
-
-                // // Construa a URL da página de destino com os valores como parâmetros de consulta
-                const url = 'pdf_ficha_financeira.php?ano=' + encodeURIComponent(ano) + '&id_matricula=' + encodeURIComponent(idMatricula) + '&NumMatricula=' + encodeURIComponent(numeroMatricula);
-                                
-                // // Redirecione o usuário para a página de destino
-                window.location.href = url;
-            });
-    </script>
 </body>
 </html>

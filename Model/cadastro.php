@@ -41,6 +41,18 @@
                 $email = $_POST['email_user'];
                 $telefone = $_POST['telefone_user'];
                 $senha = $_POST['senha_user'];
+                $confirm_senha = $_POST['confirma_senha'];
+
+                if($senha !== $confirm_senha){
+
+                    //pegando o CPF dele e mando como parametro para a URL cadastro
+                    $parametro1 =$cpf;
+                    $parametroCriptografado = base64_encode($parametro1);
+
+                    $url = '../cadastro.html?parametro=' . urlencode($parametroCriptografado);
+                    header('Location: ' . $url);
+                    exit();
+                }
 
                 $result = mysqli_query($conexao, "INSERT INTO infor_user(usuarios_cpf_user,nome_user,telefone_user,email_user,senha_user) 
                 VALUES ('$cpf','$nome','$telefone','$email','$senha')");
