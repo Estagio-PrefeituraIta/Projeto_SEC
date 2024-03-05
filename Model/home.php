@@ -13,25 +13,9 @@ if (!isset($_SESSION['cpf_user']) || !isset($_SESSION['senha_user'])) {
 }
 // Verificar se o botão de logout foi clicado
 if (isset($_POST['logout'])) {
-    echo '<script>
-            // Exibir o alerta com opções
-            var confirmLogout = confirm("Deseja Sair?");
-
-            // Verificar a escolha do usuário
-            if (confirmLogout) {
-                // Se confirmado, encerra a sessão e redireciona
-                alert("Sessão encerrada!");
-                // Encerrar a sessão
-                `session_destroy();`
-
-                // Redirecionar para a página de login (ou outra página desejada)
-                window.location.href = "../login.html";
-            } else {
-                // Se não confirmado, continua
-                alert("Sessão não encerrada");
-            }
-          </script>';
+    session_destroy();
 }
+
 $logado = $_SESSION['cpf_user'];
 // print_r($logado);
 ?>
@@ -70,7 +54,7 @@ $logado = $_SESSION['cpf_user'];
         <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item"><a class="nav-link active" href="./home.php"><i class="fas fa-home"></i> Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="../View/sobre.html"><i class="fas fa-info"></i> Sobre</a></li>
+            <li class="nav-item"><a class="nav-link" href="../View/sobre.php"><i class="fas fa-info"></i> Sobre</a></li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-sign-out-alt"></i> Sair
