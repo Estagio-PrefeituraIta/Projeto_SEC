@@ -3,7 +3,7 @@
 
     // Controle de Sessao 
     if (!isset($_SESSION['cpf_user'])) {
-        header("Location: ../home.php");
+        header("Location: ./home.php");
         exit();
     }
     
@@ -29,7 +29,7 @@
 
             if(mysqli_num_rows($result)<1){
                 //Caso não esteja nos dados da prefeitura
-                echo "<script>alert(`nao ta no usuarios nao posso cadastrar`)</script>";
+                echo "<script>alert(nao ta no usuarios nao posso cadastrar)</script>";
                 
             } else {
                 
@@ -41,18 +41,6 @@
                 $email = $_POST['email_user'];
                 $telefone = $_POST['telefone_user'];
                 $senha = $_POST['senha_user'];
-                $confirm_senha = $_POST['confirma_senha'];
-
-                if($senha !== $confirm_senha){
-
-                    //pegando o CPF dele e mando como parametro para a URL cadastro
-                    $parametro1 =$cpf;
-                    $parametroCriptografado = base64_encode($parametro1);
-
-                    $url = '../cadastro.html?parametro=' . urlencode($parametroCriptografado);
-                    header('Location: ' . $url);
-                    exit();
-                }
 
                 $result = mysqli_query($conexao, "INSERT INTO infor_user(usuarios_cpf_user,nome_user,telefone_user,email_user,senha_user) 
                 VALUES ('$cpf','$nome','$telefone','$email','$senha')");
@@ -60,12 +48,16 @@
                 // Verifica se foi possivel
                 if (!$result) {
                     // Redirecionar para a tela de login
-                    echo"error";
-                    header("Location: ../cadastro.html");
+                    echo "<script>
+                        alert('Error');
+                        window.location.href = '../cadastro.html';
+                    </script>";
                     exit; // Certifique-se de que o script pare de ser executado após o redirecionamento
                 }else{
-                    echo "<script>alert(`$nome cadastrado no sistema`)</script>";
-                    header("Location: ../login.html");
+                    echo "<script>
+                        alert('$nome cadastrado no sistema');
+                        window.location.href = '../login.html';
+                    </script>";
                 }
             }
 

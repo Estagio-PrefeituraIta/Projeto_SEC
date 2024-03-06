@@ -17,9 +17,9 @@
     $logado = $_SESSION['cpf_user'];
     // print_r($logado);
 
-    $empresa = 'MUNICIPIO DE ITACOATIARA';
-    $endereco = 'RUA DR LUZARDO FERREIRA DE MELO, 2225, CENTRO';
-    $cidade_uf=  ' ITACOATIARA-AM';
+    $empresa = 'Municipio de Itacoatiara';
+    $endereco = 'Rua Dr Luzardo Ferreira de Melo, 2225, Centro';
+    $cidade_uf=  'Itacoatiara - AM';
     $cnpj = '04.241.980/0001-75';
 
     // Verifica se os parâmetros 'mes' e 'ano' estão presentes na URL
@@ -82,50 +82,102 @@
     } 
 
     echo "
-    <div class='container'>
-    <h2>Recibo de Pagamento de Salário</h2>
-        <div class='info'>
-            <div class='company-info'>
-                <div><strong>Empresa:</strong> $empresa</div>
-                <div>
-                <strong>Endereço:</strong> $endereco
-                </div>
-                <div><strong>Cidade/UF:</strong> $cidade_uf</div>
-                <div><strong>CNPJ:</strong> $cnpj</div>
-            </div>
-        <div class='date-info'>
-            <h4>Mês/Ano: <br/> $mes/$ano</h4>
-        </div>
-    </div>
-        <table>
-        <tr>
-            <th>Matrícula</th>
-            <th>Nome</th>
-            <th>PIS/PASEP</th>
-            <th>ADMISSÃO</th>
-            <th>Lotação</th>
-        </tr>
-        <tr>
-            <td>$matricula</td>
-            <td>$usuario</td>
-            <td></td>
-            <td>$admissao</td>
-            <td>$lotacao</td>
-        </tr>
-        </table>
-    </div>
 
-    <table class='table'>
-      <thead>
+
+    <body>
+    <div class='container'>
+        <div class='header'>
+         <img class='logo' src='../logo.png' alt='Logo da empresa'>
+         <table class='tableTitle'>
+                <tr>
+                <th class='titulo'>Empresa:</th>
+                <td class='titulo'>$empresa</td>
+                </tr>
+                <tr>
+                 <th class='titulo'>Endereço:</th>
+                      <td class='titulo'>$endereco</td>
+                 </tr>
+                 <tr>
+                    <th class='titulo'>Cidade:</th>
+                    <td class='titulo'>$cidade_uf</td>
+                </tr>
+
+                <tr>
+                    <th class='titulo'>CNPJ:</th>
+                    <td class='titulo'>$cnpj</td>
+                </tr>
+
+            </table>
+
+
+        </div>
+        <div class='info'>
+        <p>Mês/Ano:$mes/$ano</p>
+    </div>
+    <h1 class='title'>Recibo de Pagamento de Salário</h1>
+<table class='table'>
         <tr>
-          <th>Código</th>
-          <th>Descrição</th>
-          <th>Referência</th>
-          <th>Vencimento</th>
-          <th>Descontos</th>
+             <th>Matrícula</th>
+            <td>$matricula</td>
+            <th>Nome</th>
+            <td>$usuario</td>
         </tr>
-      </thead>
-      <tbody>
+
+    <tr>
+        <th>PIS/PASEP</th>
+        <td>$matricula</td>
+        <th>Admissão</th>
+        <td>$admissao</td>
+    </tr>
+
+    <tr>
+        <th>Lotação</th>
+        <td>$lotacao</td>
+        <th>Cargo</th>
+        <td>$cargo</td>
+    </tr>
+
+    <tr>
+        <th>Banco</th>
+        <td>-</td>
+        <th>Agência</th>
+        <td>-</td>
+    </tr>
+
+    <tr>
+        <th>Conta</th>
+        <td>-</td>
+    </tr>
+</table'>
+
+<table class='table'>
+  <thead>
+    <tr>
+        <th>Codigo</th>
+        
+        <th>Descrição</th>
+        
+        <th>Referência</th>
+        
+        <th>Ventimentos</th>
+        
+        <th>Descontos</th>
+    
+    </tr>
+    </thead>
+    <tbody>
+    <td>-</td>
+    <td>VENCIMENTO</td>
+    <td>$referencia</td>
+    <td>-</td>
+    <td>-</td>
+    </tbody>
+ </table'>
+
+
+ 
+
+ </body>
     ";
 
     // Obter os dados da tabela variável (dados do contracheque) 
@@ -148,15 +200,7 @@
        // echo "<br>Referencia: $referencia";
        // echo "<br>Valor: $valor <hr>";
        echo "
-       <tr>
-          <td>002</td>
-          <td>Serviço X</td>
-          <td>$referencia</td>
-          <td>2024-04-10</td>
-          <td>10%</td>
-        </tr>
-      </tbody>
-    </table>";
+       <table></table'>";
    } 
 
     //Fazer Verificação Mensal
@@ -169,7 +213,14 @@
 
     $url = 'pdfteste.php?mes=' . urlencode($mes) . '&ano=' . urlencode($ano) . '&id_matricula=' . urlencode($id_matricula) . '&NumMatricula=' . urlencode($matricula);
     
-    echo "<br><a  href='$url' target='_blank'>Visualizar em PDF</a>";
+    echo"
+    <div class='assinatura'>
+    ______________________________________________
+        <p>Assinatura do Empregado</p>
+      </div>
+    
+    
+    <br><a  href='$url' target='_blank'>Visualizar em PDF</a>";
     
 ?>
 
@@ -180,9 +231,80 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="http://localhost/Projeto_SEC/Model/assets/css/pdf.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+    <title>Recibo de Pagamento de Salário</title>
 
-</body>
+    <style>
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      width: 750px;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+      padding: 20px;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .logo {
+      width: 100px;
+    }
+
+    .info {
+      text-align: right;
+      font-weight: bold;
+    }
+    .infoCidade {
+      text-align: left;
+    }
+
+    .title {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 5px;
+    }
+
+    th {
+      text-align: left;
+    }
+  
+    .tableTitle{
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+.titulo{
+  border: 1px solid #ccc;
+      padding: 5px;
+}
+    .total {
+      font-weight: bold;
+    }
+
+    .assinatura {
+      text-align: center;
+      margin-top: 70px;
+    }
+
+    </style>
+</head>
 </html>
