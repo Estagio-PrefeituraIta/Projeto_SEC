@@ -10,9 +10,10 @@ if (!isset($_SESSION['cpf_user']) || !isset($_SESSION['senha_user'])) {
     unset($_SESSION['senha_user']);
 
     // Redirecionar para a página de login
-    header('Location: ./login.html');
+    header('Location: ../login.html');
     exit(); // Certifique-se de sair após o redirecionamento
 }
+
 
 $logado = $_SESSION['cpf_user'];
 // print_r($logado);
@@ -82,12 +83,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="../Model/home.php"
+              <a class="nav-link" href="./home.php"
                 ><i class="fas fa-home"></i> Home</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../View/sobre.html"
+              <a class="nav-link" href="../View/sobre.php"
                 ><i class="fas fa-info"></i> Sobre</a
               >
             </li>
@@ -104,7 +105,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <i class="fas fa-sign-out-alt"></i> Sair
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <form class="dropdown-item" method="post" action="">
+                <form class="dropdown-item" method="post">
                   <input
                     class="btn btn-outline-danger"
                     type="submit"
@@ -118,6 +119,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
       </div>
     </nav>
+
     <?php
     include_once('../Controller/conexao.php');
     
