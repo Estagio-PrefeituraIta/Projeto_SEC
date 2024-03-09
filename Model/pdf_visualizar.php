@@ -22,6 +22,18 @@
     $cidade_uf=  'Itacoatiara - AM';
     $cnpj = '04.241.980/0001-75';
 
+    $codigo1 = '001';
+    $codigo2 = '112';
+    $codigo3 = '919';
+    $descricao1 = 'VENCIMENTO';
+    $descricao2 = 'PRODUTIVIDADE';
+    $descricao3 = 'PREVIDENCIA-INSS';
+    $referencia1 = '30 D';
+    $referencia2 = '1.00';
+    $referencia3 = '7.50';
+    $vencimentos = '1.412,00';
+    $descontos = '105,90';
+
     // Verifica se os parâmetros 'mes' e 'ano' estão presentes na URL
     if (isset($_GET['mes'], $_GET['ano'], $_GET['id_matricula'], $_GET['NumMatricula'])){
         // Obtém os valores de mês e ano da URL e realiza a sanitização
@@ -82,8 +94,6 @@
     } 
 
     echo "
-
-
     <body>
     <div class='container'>
         <div class='header'>
@@ -149,36 +159,123 @@
         <td>-</td>
     </tr>
 </table'>
-
-<table class='table'>
-  <thead>
-    <tr>
-        <th>Codigo</th>
-        
-        <th>Descrição</th>
-        
-        <th>Referência</th>
-        
-        <th>Ventimentos</th>
-        
-        <th>Descontos</th>
-    
-    </tr>
-    </thead>
-    <tbody>
-    <td>-</td>
-    <td>VENCIMENTO</td>
-    <td>$referencia</td>
-    <td>-</td>
-    <td>-</td>
-    </tbody>
- </table'>
-
-
- 
-
  </body>
     ";
+
+
+
+//tabela com as informações que irão ser para o calculo geral: cod, descrição, referencia, vencimentos e descontos
+        echo '
+        <br>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Cod</th>
+                    <th>Descrição</th>
+                    <th>Referência</th>
+                    <th>Vencimentos</th>
+                    <th>Descontos</th>
+                   
+      
+                </tr>
+            </thead>';
+            //chamda dos valores para preechimento da tabela
+                echo"
+                <tbody>
+                    <tr>
+                        <td>$codigo1</td>
+                        <td>$descricao1</td>
+                        <td>$referencia1</td>
+                        <td>$vencimentos</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                    <td>$codigo2</td>
+                    <td>$descricao2</td>
+                    <td>$referencia2</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                <td>$codigo3</td>
+                <td>$descricao3</td>
+                <td>$referencia3</td>
+                <td></td>
+                <td>$descontos</td>
+            </tr>
+
+                </tbody>
+            </table>";
+
+
+
+            // tabelas de Totais: vencimentos, descontos, valor liquido
+$totalVencimento = '1.612,00';
+$totalDesconto = '105,90';
+$valorLiquido = '0,00';
+            echo '
+            <br>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Total de Vencimentos</th>
+                        <th>Total de Descontos</th>
+                        <th>Valor Liquido</th>
+                       
+          
+                    </tr>
+                </thead>';
+                //listagem dos totais
+                    echo"
+                    <tbody>
+                        <tr>
+                            <td>$totalVencimento</td>
+                            <td>$totalDesconto</td>
+                            <td>$valorLiquido</td>
+                        </tr>
+                    </tbody>
+                </table>";
+
+
+// tabelas de Bases: Salario, previdencia, FGTS do mês Base IRRF
+$salarioBase = '1.412,00';
+$basePrevidência = '1.412,00';
+$baseFGTS = '0,00';
+$fgtsMes= '0,00';
+$baseIRRF = '1.612,00';
+
+
+            echo '
+            <br>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Salario Base</th>
+                        <th>Base Previdência</th>
+                        <th>Base FGTS</th>
+                        <th>FGTS do Mês</th>
+                        <th>Base IRRF</th>
+                       
+          
+                    </tr>
+                </thead>';
+                //listagem dos totais
+                    echo"
+                    <tbody>
+                        <tr>
+                            <td>$salarioBase</td>
+                            <td>$basePrevidência</td>
+                            <td>$baseFGTS</td>
+                            <td>$fgtsMes</td>
+                            <td>$baseIRRF</td>
+                        </tr>
+                    </tbody>
+                </table>";
+
+
+
 
     // Obter os dados da tabela variável (dados do contracheque) 
     //  Se você obtiver resultados duplicados (com meses iguais)
