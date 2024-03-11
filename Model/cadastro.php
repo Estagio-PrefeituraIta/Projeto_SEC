@@ -1,12 +1,6 @@
 <?php
     session_start();
 
-    // Controle de Sessao 
-    if (!isset($_SESSION['cpf_user'])) {
-        header("Location: ../home.php");
-        exit();
-    }
-    
     //Verifica se clicou no botão e se o cpf não está vazio
     if(isset($_POST['submit']) && !empty($_POST['cpf_user'])){
 

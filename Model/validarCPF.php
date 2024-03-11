@@ -32,7 +32,6 @@ if (isset($_POST['submit']) && !empty($_POST['cpf_user'])) {
             $parametro1 =$cpf_user;
             $parametroCriptografado = base64_encode($parametro1);
             $url = '../cadastro.html?parametro=' . urlencode($parametroCriptografado);
-            print_r ($parametro1);
             header('Location: ' . $url);
             // header('Location: ../cadastro.html');
         }
