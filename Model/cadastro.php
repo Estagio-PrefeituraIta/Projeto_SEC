@@ -1,15 +1,12 @@
 <?php
     session_start();
 
-<<<<<<< HEAD
     // Controle de Sessao 
     if (!isset($_SESSION['cpf_user'])) {
         header("Location: ./home.php");
         exit();
     }
     
-=======
->>>>>>> 8cb1f98a2d2eafc90029a82c21ddf7c03c0e518d
     //Verifica se clicou no botão e se o cpf não está vazio
     if(isset($_POST['submit']) && !empty($_POST['cpf_user'])){
 
